@@ -119,7 +119,7 @@ async def start(bot: Client, cmd: Message):
                     disable_web_page_preview=True, quote=True)
             await asyncio.sleep(AUTO_DELETE_TIME)
             for sent_message in sent_messages:
-                await sent_message.delete()
+                await sent_messages.delete()
         except:
             pass
 
