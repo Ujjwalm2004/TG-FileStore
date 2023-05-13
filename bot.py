@@ -98,17 +98,23 @@ async def start(bot: Client, cmd: Message):
             message_ids = []
             if GetMessage.text:
                 message_ids = GetMessage.text.split(" ")
-                _response_msg = await cmd.reply_text(
-                    text=f"**Total Files:** `{len(message_ids)}`",
-                    quote=True,
-                    disable_web_page_preview=True
-                )
+                #_response_msg = await cmd.reply_text(
+                    #text=f"**Total Files:** `{len(message_ids)}`",
+                    #quote=True,
+                    #disable_web_page_preview=True
+                #)
             else:
                 message_ids.append(int(GetMessage.id))
+            sent_messages = []
             for i in range(len(message_ids)):
-                await send_media_and_reply(bot, user_id=cmd.from_user.id, file_id=int(message_ids[i]))
-        except Exception as err:
-            await cmd.reply_text(f"Something went wrong!\n\n**Error:** `{err}`")
+                sent_message = await send_media_and_reply(bot, user_id=cmd.from_user.id, file_id=int(message_ids[i]))
+                sent_messages.append(sent_message)
+                await cmd.reply_text('‼️ File will auto delete in 2 minutes😱\n💡Forward it to saved massages or anywhere before downloading.😁\n😇Join @{UPDATES_CHANNEL_USERNAME}') 
+                await asyncio.sleep(AUTO_DELETE_TIME)
+                for sent_message in sent_messages:
+                    await sent_message.delete()
+        except:
+            pass
 
 
 @Bot.on_message((filters.document | filters.video | filters.audio) & ~filters.chat(Config.DB_CHANNEL))
