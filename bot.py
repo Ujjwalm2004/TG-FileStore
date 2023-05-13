@@ -1,6 +1,7 @@
 # (c) @TeleRoidGroup || @PredatorHackerzZ
 
 import os
+from os import environ
 import asyncio
 import traceback
 from binascii import (
