@@ -117,9 +117,9 @@ async def start(bot: Client, cmd: Message):
                 await cmd.reply_text(
                     f"{AUTODELETE_MESSAGE}",
                     disable_web_page_preview=True, quote=True)
-            await asyncio.sleep(AUTO_DELETE_TIME)
-            for message in sent_messages:
-                await message.delete()
+            await asyncio.sleep(DELETE_TIME)
+            for sent_message in sent_messages:
+                await sent_message.delete()
         except:
             pass
 
