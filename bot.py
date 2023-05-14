@@ -115,8 +115,7 @@ async def start(bot: Client, cmd: Message):
                 sent_message = await send_media_and_reply(bot, user_id=cmd.from_user.id, file_id=int(message_ids[i]))
                 sent_messages.append(sent_message)
                 await cmd.reply_text(
-                    f"{AUTODELETE_MESSAGE}",
-                    disable_web_page_preview=True, quote=True)
+                    f"{AUTODELETE_MESSAGE}")
             await asyncio.sleep(DELETE_TIME)
             for sent_message in sent_messages:
                 await sent_message.delete()
