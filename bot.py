@@ -41,7 +41,7 @@ from handlers.save_media import (
 
 UPDATES_CHANNEL_USERNAME = ("Movies_X_Animes")
 DELETE_TIME = int(environ.get('DELETE_TIME', 120))#1min=60s , 2min=60×2=120 , 5min=60×5=300 😎🤏
-AUTODELETE_MESSAGE = os.getenv("from os import environ", f'''<b>‼️ File will auto delete in {DELETE_TIME} seconds😱\n💡Forward it to saved massages or anywhere before downloading.😁\n😇Join @{UPDATES_CHANNEL_USERNAME}</b>''')
+AUTODELETE_MESSAGE = os.getenv("AUTODELETE_MESSAGE", f'''<b>‼️ File will auto delete in {DELETE_TIME} seconds😱\n💡Forward it to saved massages or anywhere before downloading.😁\n😇Join @{UPDATES_CHANNEL_USERNAME}</b>''')
 
 MediaList = {}
 
